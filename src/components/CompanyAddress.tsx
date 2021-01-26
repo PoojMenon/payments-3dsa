@@ -9,7 +9,7 @@ import { Combobox } from "@twilio-paste/combobox";
 import { Anchor } from "@twilio-paste/core/anchor";
 import { SearchIcon } from "@twilio-paste/icons/esm/SearchIcon";
 
-const CompanyAddress = () => {
+export const CompanyAddress = () => {
   const [inputValue, setInputValue] = React.useState("");
   const [inputValue1, setInputValue1] = React.useState("");
   const [inputValue2, setInputValue2] = React.useState("");
@@ -319,5 +319,3 @@ const CompanyAddress = () => {
     </Box>
   );
 };
-
-export default CompanyAddress;

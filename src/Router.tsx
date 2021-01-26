@@ -12,6 +12,13 @@ import CompanyAddressPage from "./pages/Upgrade/CompanyAddressPage";
 import CompletePage from "./pages/Upgrade/CompletePage";
 import VatPage from "./pages/Upgrade/VatPage";
 
+import EditCard from "./pages/AddCard/EditCard";
+import PaymentMethodsList from "./pages/AddCard/PaymentMethodList";
+import PaymentMethodsAdded from "./pages/AddCard/PaymentMethodsAdded";
+import AddNewPaymentMethod from "./pages/AddCard/AddPaymentMethod";
+import CardEdited from "./pages/AddCard/CardEdited";
+import ThreedsFlow from "./pages/AddCard/3dsFlow";
+
 export default () => {
   const wrapWithLayout = (component) => {
     return <WrappedLayout>{component}</WrappedLayout>;
@@ -42,6 +49,7 @@ export default () => {
         </Route>
 
         {/* End Add Funds */}
+
         {/* Upgrade */}
         <Route exact path="/upgrade" key={"Route-Company-Address"}>
           {wrapWithLayout(<CompanyAddressPage />)}
@@ -66,6 +74,36 @@ export default () => {
           {wrapWithLayout(<CompletePage />)}
         </Route>
         {/* End Upgrade */}
+
+        {/* Add Cards */}
+        <Route exact path="/view-payment-methods" key={"Route-Main"}>
+          {wrapWithLayout(<PaymentMethodsList />)}
+        </Route>
+        <Route exact path="/edit-card" key={"Route-Edit-Card"}>
+          {wrapWithLayout(<EditCard />)}
+        </Route>
+        <Route exact path="/card-edited" key={"Route-Edit-Card"}>
+          {wrapWithLayout(<CardEdited />)}
+        </Route>
+        <Route
+          exact
+          path="/add-new-payment-method"
+          key={"Route-Add-Payment-Method"}
+        >
+          {wrapWithLayout(<AddNewPaymentMethod />)}
+        </Route>
+        <Route
+          exact
+          path="/payment-methods-added"
+          key={"Route-Payment-Method-Added"}
+        >
+          {wrapWithLayout(<PaymentMethodsAdded />)}
+        </Route>
+        <Route exact path="/threeds" key={"Route-Payment-Method-Three-DS"}>
+          {wrapWithLayout(<ThreedsFlow />)}
+        </Route>
+
+        {/* End of Add Card */}
       </Switch>
     </BrowserRouter>
   );
