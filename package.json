@@ -1,7 +1,7 @@
 {
-  "name": "billing3dsa-payments",
+  "name": "billing-payments-3dsa",
   "version": "1.0.0",
-  "description": "",
+  "description": "Contains the flows for upgrade, add funds and add cards",
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
