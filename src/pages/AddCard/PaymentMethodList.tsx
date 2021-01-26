@@ -80,7 +80,7 @@ const PaymentMethodList = (props) => {
                 <Flex>
                   <Box display="flex" alignItems="center">
                     <Box>
-                      <Anchor href="/add-payment-method">
+                      <Anchor href="/add-new-payment-method">
                         Add payment method
                       </Anchor>
                     </Box>
