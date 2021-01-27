@@ -10,61 +10,9 @@ import { Heading } from "@twilio-paste/core/heading";
 import { PlusIcon } from "@twilio-paste/icons/esm/PlusIcon";
 // import Maincontainer from "../components/Maincontainer";
 import PaymentMethodTable from "../../components/PaymentMethodTable";
-import { ToastContext } from "../context/ToastContext";
-import { Toaster, useToaster } from "@twilio-paste/toast";
-import { useLocation } from "react-router-dom";
 
 const PaymentMethodList = (props) => {
-  let location = useLocation();
-  const updateCard = useState(
-    location.state ? location.state.updateCard : false
-  );
-  // const {
-  //   state: { toaster }
-  // } = useContext(ToastContext);
-
-  // useEffect(() => {
-  //   if (toaster) {
-  //     console.log("PM found toaster");
-  //     setInterval(() => {
-  //       toaster.push({
-  //         message: "🍕 Sick topping!",
-  //         variant: "success",
-  //         dismissAfter: 3000
-  //       });
-  //     }, 1000);
-  //   }
-  // }, [toaster]);
-  // const toaster1 = useToaster();
-  // useEffect(() => {
-  //   if (updateCard) {
-  //     toaster1.push({
-  //       message: "Funds added successfully",
-  //       variant: "success",
-  //       dismissAfter: 4000
-  //     });
-  //   }
-  // }, []);
-
   return (
-    //   <Theme.Provider theme="default">
-    //     <Header />
-
-    //     <Subheader />
-
-    //     <Grid marginBottom="space70">
-    //       {/* Navigation */}
-    //       <Column span={2}>
-    //         <Navgrid />
-    //       </Column>
-    //       {/* END Navigation */}
-
-    //       <Column span={10}>
-    //         <Maincontainer />
-    //       </Column>
-    //     </Grid>
-    //   </Theme.Provider>
-    // );
     <Box>
       {/* <Toaster {...toaster1} /> */}
       <Stack orientation="vertical" spacing="space160">
