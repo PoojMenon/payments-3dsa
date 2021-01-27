@@ -12,7 +12,8 @@ import { Stack } from "@twilio-paste/core";
 export const PaymentMethod = ({ fundAmount, source }) => {
   // const [inputValue, setInputValue] = React.useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
-
+  console.log("fund", fundAmount);
+  const isFundAmount = fundAmount === "" ? false : true;
   const [ccName, setCCName] = React.useState("");
   const [ccNameError, setCCNameError] = useState("");
 
@@ -202,7 +203,16 @@ export const PaymentMethod = ({ fundAmount, source }) => {
             handleFormSubmit();
           }}
         >
-          Add Credit Card
+          {source === "upgrade"
+            ? fundAmount
+              ? `Confirm $${fundAmount} payment`
+              : "Upgrade now"
+            : "Add Credit Card"}
+          {/* {fundAmount
+            ? source === "upgrade"
+              ? `Confirm $${fundAmount} payment`
+              : "Upgrade now"
+            : "Add Credit Card"} */}
         </Button>
         {/* </Link> */}
       </Stack>
