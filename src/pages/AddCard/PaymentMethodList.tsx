@@ -1,7 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { render } from "react-dom";
-import { Theme } from "@twilio-paste/theme";
-import { Grid, Column } from "@twilio-paste/grid";
+import React from "react";
 import { Stack } from "@twilio-paste/core/stack";
 import { Box } from "@twilio-paste/core/box";
 import { Flex } from "@twilio-paste/flex";
