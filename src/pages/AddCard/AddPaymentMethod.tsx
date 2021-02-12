@@ -29,14 +29,14 @@ export default function AddPaymentMethodPage() {
                 />
               </Box>
               <Box as="div">
-                <Anchor href="/payment-methods">
-                  {"Back to Payment Methods"}
+                <Anchor href="/view-payment-methods">
+                  {"Back to payment methods"}
                 </Anchor>
               </Box>
             </Flex>
           </Box>
           <Heading as="h1" variant="heading10">
-            Add Payment Method
+            Add payment method
           </Heading>
 
           {/* Tabs */}

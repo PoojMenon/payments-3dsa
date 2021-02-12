@@ -55,6 +55,7 @@ export const CompanyAddress = () => {
     "Burundi",
     "Cambodia",
     "Cameroon",
+    "Canada",
     "Cape Verde",
     "Cayman Islands",
     "Chad",
@@ -238,7 +239,6 @@ export const CompanyAddress = () => {
           autocomplete
           items={inputItems}
           labelText="First, select the country"
-          helpText="Choose the country your main address is located."
           insertAfter={
             <SearchIcon decorative={true} size="sizeIcon20" title="search" />
           }
@@ -253,7 +253,7 @@ export const CompanyAddress = () => {
           }}
         />
       </Box>
-      <Box marginBottom="space50">
+      {/* <Box marginBottom="space50">
         <Label htmlFor={inputID("input1")}>
           Who should we address your invoice to? (optional)
         </Label>
@@ -263,7 +263,7 @@ export const CompanyAddress = () => {
           type="text"
           value={inputValue1}
         />
-      </Box>
+      </Box> */}
       <Box marginBottom="space50">
         <Label htmlFor={inputID("input2")}>Address line 1</Label>
         <Input

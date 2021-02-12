@@ -89,14 +89,18 @@ export const Vat = ({ fundAmount }) => {
           No, I cannot provide a tax number
         </Radio>
       </RadioGroup>
-      <Button
-        variant="primary"
-        onClick={() => {
-          handleForm();
-        }}
-      >
-        Continue
-      </Button>
+
+      <Stack orientation="horizontal" spacing="space40">
+        <Button
+          variant="primary"
+          onClick={() => {
+            handleForm();
+          }}
+        >
+          Continue
+        </Button>
+        <Anchor href="#">Back</Anchor>
+      </Stack>
     </Stack>
   );
 };

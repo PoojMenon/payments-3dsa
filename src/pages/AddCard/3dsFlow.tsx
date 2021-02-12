@@ -11,7 +11,10 @@ export default () => {
 
   return (
     <div>
-      <img src="https://www.logodesign.net/logo/piggy-bank-merged-with-a-bank-building-4574ld.png?size=2&industry=bank&bg=0" />
+      <img
+        src="https://www.logodesign.net/logo/piggy-bank-merged-with-a-bank-building-4574ld.png?size=2&industry=bank&bg=0"
+        alt="bank logo"
+      />
       <div>
         <label htmlFor="">
           Please enter the one-time token you received to verify your payment.

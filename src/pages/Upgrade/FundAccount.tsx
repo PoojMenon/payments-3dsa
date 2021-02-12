@@ -24,7 +24,7 @@ const FundAccount = () => {
 
   return (
     <>
-      <Box as="div">
+      {/* <Box as="div">
         <Flex vAlignContent="center">
           <Box as="div">
             <ArrowBackIcon
@@ -38,7 +38,7 @@ const FundAccount = () => {
             <Anchor href="/tax">{"Back to Tax"}</Anchor>
           </Box>
         </Flex>
-      </Box>
+      </Box> */}
       <Heading as="h1" variant="heading10">
         Fund your account
       </Heading>
@@ -60,9 +60,9 @@ const FundAccount = () => {
                 How much would you like to start your account balance with?
               </Text>
               <Box as="form">
-                <Label htmlFor="payment_amount">Payment Amount</Label>
+                <Label htmlFor="payment_amount">Payment amount</Label>
 
-                <Box maxWidth="size20">
+                <Box maxWidth="size10">
                   <Input
                     value={fundAmount}
                     aria-describedby="payment_amount_help_text"
@@ -81,7 +81,7 @@ const FundAccount = () => {
                 </HelpText>
               </Box>
               <Text as="h5" fontSize="fontSize30" color="colorText">
-                Would you like to set up automatic recharge to keep your account
+                Would you like to set up auto recharge to keep your account
                 balance topped up?
               </Text>
 
@@ -94,19 +94,23 @@ const FundAccount = () => {
                   setIsAutoRechargeVisible(event.target.checked);
                 }}
               >
-                Yes, enable auto-recharge
+                Yes, enable auto recharge
               </Checkbox>
               {isAutoRechargeVisible && <AutoRecharge />}
-              <Link
-                to={{
-                  pathname: "/add-payment-method-upg",
-                  search: "?sort=name",
-                  hash: "#the-hash",
-                  state: { fundAmount }
-                }}
-              >
-                <Button variant="primary">Continue</Button>
-              </Link>
+
+              <Stack orientation="horizontal" spacing="space40">
+                <Link
+                  to={{
+                    pathname: "/add-payment-method-upg",
+                    search: "?sort=name",
+                    hash: "#the-hash",
+                    state: { fundAmount }
+                  }}
+                >
+                  <Button variant="primary">Continue</Button>
+                </Link>
+                <Anchor href="#">Back</Anchor>
+              </Stack>
             </Stack>
           </TabPanel>
           <TabPanel id={"promo-code"}>
@@ -127,7 +131,7 @@ const FundAccount = () => {
                 </Box>
               </Box>
               <Text as="h5" fontSize="fontSize30" color="colorText">
-                Would you like to set up automatic recharge to keep your account
+                Would you like to set up auto recharge to keep your account
                 balance topped up?
               </Text>
 
@@ -137,7 +141,7 @@ const FundAccount = () => {
                 name="autor"
                 onChange={() => console.log("checkbox clicked")}
               >
-                Yes, enable auto-recharge
+                Yes, enable auto recharge
               </Checkbox>
               {/* <AutoRecharge /> */}
               <Link

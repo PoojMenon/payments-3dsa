@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useUIDSeed } from "@twilio-paste/core/uid-library";
 import { Box } from "@twilio-paste/box";
 import { Label } from "@twilio-paste/label";
-import { Input, HelpText } from "@twilio-paste/core";
+import { Input, HelpText, Anchor } from "@twilio-paste/core";
 // import { Select, Option } from "@twilio-paste/core/select";
 import { Button } from "@twilio-paste/button";
 import { Checkbox, CheckboxGroup } from "@twilio-paste/checkbox";
-import { Link, useHistory } from "react-router-dom";
-import { Stack } from "@twilio-paste/core";
+import { useHistory } from "react-router-dom";
+import { Stack } from "@twilio-paste/stack";
 
 export const PaymentMethod = ({ fundAmount, source }) => {
   // const [inputValue, setInputValue] = React.useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
-  console.log("fund", fundAmount);
-  const isFundAmount = fundAmount === "" ? false : true;
+
   const [ccName, setCCName] = React.useState("");
   const [ccNameError, setCCNameError] = useState("");
 
@@ -21,11 +20,14 @@ export const PaymentMethod = ({ fundAmount, source }) => {
   const [ccNumberError, setCCNumberError] = useState("");
 
   // const [inputValue3, setInputValue3] = React.useState("");
-  const [expDate, setExpDate] = React.useState("");
-  const [ccExpiryError, setCCExpiryError] = useState("");
+  // const [expDate, setExpDate] = React.useState("");
+  // const [ccExpiryError, setCCExpiryError] = useState("");
 
   const [ccCVV, setCCCVV] = useState("");
   const [ccCVVError, setCCCVVError] = useState("");
+
+  const [expDateMm, setExpDateMm] = React.useState("");
+  const [expDateYy, setExpDateYy] = React.useState("");
 
   const router = useHistory();
 
@@ -53,13 +55,13 @@ export const PaymentMethod = ({ fundAmount, source }) => {
         setCCNumberError("");
       }
 
-      if (!expDate) {
-        setCCExpiryError("Please enter the card expiry (MMYY).");
-      } else if (expDate.length < 4) {
-        setCCExpiryError("Card expiry is too short. Must be in MMYY format.");
-      } else {
-        setCCExpiryError("");
-      }
+      // if (!expDate) {
+      //   setCCExpiryError("Please enter the card expiry (MMYY).");
+      // } else if (expDate.length < 4) {
+      //   setCCExpiryError("Card expiry is too short. Must be in MMYY format.");
+      // } else {
+      //   setCCExpiryError("");
+      // }
 
       if (!ccCVV) {
         setCCCVVError("Please enter the card CVV number.");
@@ -73,23 +75,17 @@ export const PaymentMethod = ({ fundAmount, source }) => {
         setCCCVVError("");
       }
     }
-  }, [ccName, cardNumber, expDate, ccCVV, formSubmitted]);
+  }, [ccName, cardNumber, expDateMm, expDateYy, ccCVV, formSubmitted]);
 
   const inputID = useUIDSeed();
 
   const handleFormSubmit = () => {
-    if (
-      formSubmitted &&
-      !ccNameError &&
-      !ccNumberError &&
-      !ccExpiryError &&
-      !ccCVVError
-    ) {
+    if (formSubmitted && !ccNameError && !ccNumberError && !ccCVVError) {
       // router.push("/add-funds");
       if (source === "addfunds") {
         router.push({
           pathname: "/add-funds",
-          state: { cardNumber, expDate }
+          state: { cardNumber, expDateMm, expDateYy }
         });
       } else if (source === "upgrade") {
         router.push("/complete");
@@ -130,7 +126,7 @@ export const PaymentMethod = ({ fundAmount, source }) => {
           )}
         </Box>
 
-        <Box marginBottom="space50">
+        {/* <Box marginBottom="space50">
           <Label htmlFor={inputID("input4")}>Expiry date</Label>
           <Box maxWidth="size10">
             <Input
@@ -146,6 +142,31 @@ export const PaymentMethod = ({ fundAmount, source }) => {
           ) : (
             <HelpText>Enter the expiry date in MMYY format</HelpText>
           )}
+        </Box> */}
+        <Box marginBottom="space50">
+          <Label htmlFor={inputID("input41")}>Expiry date</Label>
+          <Stack orientation="horizontal" spacing="space60">
+            <Box maxWidth="50px">
+              <Label htmlFor={inputID("input4")}>Month</Label>
+              <Input
+                id={inputID("input4")}
+                onChange={(e) => setExpDateMm(e.currentTarget.value)}
+                placeholder="MM"
+                type="text"
+                value={expDateMm}
+              />
+            </Box>
+            <Box maxWidth="50px">
+              <Label htmlFor={inputID("input42")}>Year</Label>
+              <Input
+                id={inputID("input4")}
+                onChange={(e) => setExpDateYy(e.currentTarget.value)}
+                placeholder="YY"
+                type="text"
+                value={expDateYy}
+              />
+            </Box>
+          </Stack>
         </Box>
 
         <Box marginBottom="space50">
@@ -196,25 +217,29 @@ export const PaymentMethod = ({ fundAmount, source }) => {
             state: { cardNumber, expDate }
           }}
         > */}
-        <Button
-          variant="primary"
-          onClick={() => {
-            setFormSubmitted(true);
-            handleFormSubmit();
-          }}
-        >
-          {source === "upgrade"
-            ? fundAmount
-              ? `Confirm $${fundAmount} payment`
-              : "Upgrade now"
-            : "Add Credit Card"}
-          {/* {fundAmount
+
+        <Stack orientation="horizontal" spacing="space40">
+          <Button
+            variant="primary"
+            onClick={() => {
+              setFormSubmitted(true);
+              handleFormSubmit();
+            }}
+          >
+            {source === "upgrade"
+              ? fundAmount
+                ? `Confirm $${fundAmount} payment`
+                : "Upgrade now"
+              : "Add Credit Card"}
+            {/* {fundAmount
             ? source === "upgrade"
               ? `Confirm $${fundAmount} payment`
               : "Upgrade now"
             : "Add Credit Card"} */}
-        </Button>
-        {/* </Link> */}
+          </Button>
+          {/* </Link> */}
+          <Anchor href="#">Back</Anchor>
+        </Stack>
       </Stack>
     </Box>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useUIDSeed } from "@twilio-paste/core/uid-library";
 import { Box } from "@twilio-paste/core/box";
 import { Text } from "@twilio-paste/core/text";
-import { Label } from "@twilio-paste/core/label";
+import { Label } from "@twilio-paste/label";
 import { Input } from "@twilio-paste/core/input";
 // import { Select, Option } from "@twilio-paste/core/select";
 import { Button } from "@twilio-paste/core/button";
@@ -29,8 +29,11 @@ export const AddPaymentMethod = ({ fundAmount }) => {
   const [ccNumber, setCCNumber] = useState("");
   const [ccNumberError, setCCNumberError] = useState("");
 
-  const [ccExpiry, setCCExpiry] = useState("");
-  const [ccExpiryError, setCCExpiryError] = useState("");
+  // const [ccExpiry, setCCExpiry] = useState("");
+  // const [ccExpiryError, setCCExpiryError] = useState("");
+
+  const [expDateMm, setExpDateMm] = React.useState("");
+  const [expDateYy, setExpDateYy] = React.useState("");
 
   const [ccCVV, setCCCVV] = useState("");
   const [ccCVVError, setCCCVVError] = useState("");
@@ -60,15 +63,15 @@ export const AddPaymentMethod = ({ fundAmount }) => {
       setCCNumberError("");
     }
 
-    if (!ccExpiry) {
-      setCCExpiryError("Please enter the card expiry date.");
-    } else if (ccExpiry.length < 4) {
-      setCCExpiryError(
-        "Card expiry is too short. Must be a minimum of 4 characters."
-      );
-    } else {
-      setCCExpiryError("");
-    }
+    // if (!ccExpiry) {
+    //   setCCExpiryError("Please enter the card expiry date.");
+    // } else if (ccExpiry.length < 4) {
+    //   setCCExpiryError(
+    //     "Card expiry is too short. Must be a minimum of 4 characters."
+    //   );
+    // } else {
+    //   setCCExpiryError("");
+    // }
 
     if (!ccCVV) {
       setCCCVVError("Please enter the card CVV number.");
@@ -81,10 +84,10 @@ export const AddPaymentMethod = ({ fundAmount }) => {
     } else {
       setCCCVVError("");
     }
-  }, [ccName, ccNumber, ccExpiry, ccCVV]);
+  }, [ccName, ccNumber, ccCVV]);
 
   const handleFormSubmit = () => {
-    if (!ccNameError && !ccNumberError && !ccExpiryError && !ccCVVError) {
+    if (!ccNameError && !ccNumberError && !ccCVVError) {
       setIsOpen(true);
       setTimeout(() => {
         router.push("/threeds");
@@ -150,7 +153,7 @@ export const AddPaymentMethod = ({ fundAmount }) => {
       </Box>
 
       <Box marginBottom="space50">
-        <Label htmlFor={"ccExpiry"}>Expiry date</Label>
+        {/* <Label htmlFor={"ccExpiry"}>Expiry date</Label>
         <Box maxWidth="size10">
           <Input
             id={"ccExpiry"}
@@ -163,7 +166,30 @@ export const AddPaymentMethod = ({ fundAmount }) => {
           <HelpText variant="error">{ccExpiryError}</HelpText>
         ) : (
           <HelpText>MMYY</HelpText>
-        )}
+        )} */}
+        <Label htmlFor={"ccExpiry"}>Expiry date</Label>
+        <Stack orientation="horizontal" spacing="space60">
+          <Box maxWidth="50px">
+            <Label htmlFor={"ccExpiryMm"}>Month</Label>
+            <Input
+              id={"ccExpiryMm"}
+              onChange={(e) => setExpDateMm(e.currentTarget.value)}
+              placeholder="MM"
+              type="text"
+              value={expDateMm}
+            />
+          </Box>
+          <Box maxWidth="50px">
+            <Label htmlFor={"ccExpiryYy"}>Year</Label>
+            <Input
+              id={"ccExpiryYy"}
+              onChange={(e) => setExpDateYy(e.currentTarget.value)}
+              placeholder="YY"
+              type="text"
+              value={expDateYy}
+            />
+          </Box>
+        </Stack>
       </Box>
 
       <Box marginBottom="space50">

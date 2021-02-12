@@ -2,7 +2,7 @@ import * as React from "react";
 import { useUIDSeed } from "@twilio-paste/core/uid-library";
 import { Box } from "@twilio-paste/core/box";
 import { Text } from "@twilio-paste/core/text";
-import { Label } from "@twilio-paste/core/label";
+import { Label } from "@twilio-paste/label";
 import { Input } from "@twilio-paste/core/input";
 import { Button } from "@twilio-paste/core/button";
 import { Checkbox, CheckboxGroup } from "@twilio-paste/checkbox";
@@ -20,11 +20,11 @@ import { useHistory } from "react-router-dom";
 
 export const CardDetails = () => {
   // const [inputValue, setInputValue] = React.useState("");
-  const [inputValue1, setInputValue1] = React.useState("");
+  const [inputValue1, setInputValue1] = React.useState("Joe Coulson");
   const [inputValue2, setInputValue2] = React.useState("");
   // const [inputValue3, setInputValue3] = React.useState("");
-  const [inputValue4, setInputValue4] = React.useState("");
-  const [inputValue5, setInputValue5] = React.useState("");
+  const [inputValue4, setInputValue4] = React.useState("01/21");
+  const [inputValue5, setInputValue5] = React.useState("***");
 
   // Modal properties
   const [isOpen, setIsOpen] = React.useState(false);
@@ -48,7 +48,6 @@ export const CardDetails = () => {
           onChange={(e) => setInputValue1(e.currentTarget.value)}
           type="text"
           value={inputValue1}
-          placeholder="Joe Coulson"
         />
       </Box>
       <Box marginBottom="space50" maxWidth="size30">

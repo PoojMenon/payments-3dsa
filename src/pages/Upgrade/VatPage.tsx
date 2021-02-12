@@ -33,7 +33,7 @@ const VatPage = () => {
     <Stack orientation="vertical" spacing="space160">
       <Stack orientation="vertical" spacing="space70">
         <Box as="section">
-          <Box as="div">
+          {/* <Box as="div">
             <Flex vAlignContent="center">
               <Box as="div">
                 <ArrowBackIcon
@@ -49,7 +49,7 @@ const VatPage = () => {
                 </Anchor>
               </Box>
             </Flex>
-          </Box>
+          </Box> */}
           <Heading as="h1" variant="heading10">
             Tax
           </Heading>

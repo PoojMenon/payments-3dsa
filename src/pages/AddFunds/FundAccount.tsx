@@ -22,9 +22,10 @@ const FundAccount = (props) => {
   console.log(location.state);
   const [ccNumber] = useState(location.state ? location.state.cardNumber : 0);
   const ccEnd = ccNumber.toString().slice(-4);
-  const [expDate] = useState(location.state ? location.state.expDate : 0);
+  const [expDateMm] = useState(location.state ? location.state.expDateMm : 0);
+  const [expDateYy] = useState(location.state ? location.state.expDateYy : 0);
   const cardDetail = location.state
-    ? `Visa ending ${ccEnd} (Exp. ${expDate})`
+    ? `Visa ending ${ccEnd} (Exp. ${expDateMm}/${expDateYy})`
     : "";
   console.log(cardDetail);
 
@@ -77,7 +78,7 @@ const FundAccount = (props) => {
               </Text>
               <Box>
                 <Label htmlFor="payment_amount">Payment Amount</Label>
-                <Box maxWidth="size20">
+                <Box maxWidth="size10">
                   <Input
                     value={fundAmount}
                     aria-describedby="payment_amount_help_text"
@@ -110,6 +111,11 @@ const FundAccount = (props) => {
                 Add a new payment method
               </Anchor> */}
               <Box display="flex" alignItems="center">
+                <Box>
+                  <Anchor href="/add-payment-method">
+                    Add a new payment method
+                  </Anchor>
+                </Box>
                 <Box as="div">
                   <PlusIcon
                     decorative={true}
@@ -117,11 +123,6 @@ const FundAccount = (props) => {
                     size="sizeIcon30"
                     color="colorTextLink"
                   />
-                </Box>
-                <Box>
-                  <Anchor href="/add-payment-method">
-                    Add a new payment method
-                  </Anchor>
                 </Box>
               </Box>
               <Link
@@ -140,33 +141,20 @@ const FundAccount = (props) => {
           </TabPanel>
           <TabPanel id={"promo-code"}>
             <Stack orientation="vertical" spacing="space60">
-              <Text
-                as="h5"
-                fontSize="fontSize30"
-                marginBottom="space30"
-                color="colorText"
-              >
-                Enter your promo code
-              </Text>
-
-              <Box paddingBottom="space60" maxWidth="size40">
-                <Label htmlFor="payment_amount" required>
-                  Promo code
-                </Label>
+              <Box paddingBottom="space60" maxWidth="size20">
+                <Label htmlFor="payment_amount">Enter your promo code</Label>
 
                 <Input
-                  value="321"
+                  value=""
                   aria-describedby="payment_amount_help_text"
                   id="payment_amount"
                   name="payment_amount"
                   type="number"
-                  placeholder="ABC"
                   onChange={() => console.log("input clicked")}
-                  required
                 />
-                <HelpText id="payment_amount_help_text">
+                {/* <HelpText id="payment_amount_help_text">
                   Enter a valid promo code.
-                </HelpText>
+                </HelpText> */}
               </Box>
 
               <Link

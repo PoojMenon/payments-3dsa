@@ -38,9 +38,9 @@ const CompletePage = (props) => {
     <Stack orientation="vertical" spacing="space160">
       <Stack orientation="vertical" spacing="space70">
         <Box as="section">
-          <Heading as="h1" variant="heading10">
+          {/* <Heading as="h1" variant="heading10">
             Congratulations
-          </Heading>
+          </Heading> */}
           <Complete />
         </Box>
       </Stack>

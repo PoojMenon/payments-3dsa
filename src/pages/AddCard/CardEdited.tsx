@@ -45,14 +45,14 @@ const CardEdited = (props) => {
                   />
                 </Box>
                 <Box as="div">
-                  <Anchor href="/payment-methods">
-                    {"Back to Payment Methods"}
+                  <Anchor href="/view-payment-methods">
+                    {"Back to payment methods"}
                   </Anchor>
                 </Box>
               </Flex>
             </Box>
             <Heading as="h1" variant="heading10">
-              Credit Card Details
+              Credit card details
             </Heading>
             <CardDetails />
           </Box>

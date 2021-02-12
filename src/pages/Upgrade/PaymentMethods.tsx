@@ -38,7 +38,7 @@ const PaymentMethods = (props) => {
     <Stack orientation="vertical" spacing="space160">
       <Stack orientation="vertical" spacing="space70">
         <Box as="section">
-          <Box as="div">
+          {/* <Box as="div">
             <Flex vAlignContent="center">
               <Box as="div">
                 <ArrowBackIcon
@@ -52,7 +52,7 @@ const PaymentMethods = (props) => {
                 <Anchor href="/add-funds-upg">{"Back to Add funds"}</Anchor>
               </Box>
             </Flex>
-          </Box>
+          </Box> */}
           <Heading as="h1" variant="heading10">
             Payment method
           </Heading>
